@@ -2,5 +2,10 @@
 
 Author: Ludovic Charleux (ludovic.charleux@univ-smb.fr)
 
-his repository contains course material written in Typst for my mechanics courses
+Ce dépôt contient des éléments de cours écrits en Typst.
 
+## Eléments disponibles
+
+### Statique des solides
+
+- Rappels sur les vecteurs:[MECA510_Statique_block1_Rappels.pdf](https://github.com/lcharleux/LCharleux_Teaching_Typst/raw/outputs/MECA510_Statique_block1_Rappels.pdf)

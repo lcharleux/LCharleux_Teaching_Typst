@@ -27,7 +27,7 @@
 
 
 
-#let theorem(body, title:none, footer:none) = showybox(
+#let theorem(body, title: none, footer: none) = showybox(
   title: title,
   frame: (
     border-color: blue,
@@ -47,50 +47,67 @@ On considère ainsi qu'un vecteur $#mvec[V]$ est un object mathématique défini
 / Son sens: le sens de parcours de la droite parmi les deux possibles.
 / Sa norme: elle quantifie l'intensité du vecteur, est notée $abs(#mvec[V])$ et a une unité qui dépend de ce que représente le vecteur. Par exemple, un champ de vitesse aura une norme en #qty("", "m/s") et une force en #qty("", "N"). Un vecteur de norme 1 sans unité est un vecteur unitaire.
 
-Dans tout le cours, on manipulera des points et des vecteurs#footnote[Voir #link("https://fr.wikipedia.org/wiki/Espace_affine")[espaces affines].]. On utilisera largement la propriété suivante:
-
-#important[Si on considère deux points $A$ et $B$ et un vecteur #mvec[u]. On peut écrire que si $B = A + #mvec[u]$, alors $#mvec[AB] = #mvec[u]$.]
+Dans tout le cours, on manipulera des points ($A$, $B$, ... ) et des vecteurs ($#mvec[u]$, $#mvec[AB]$, ...)#footnote[Voir #link("https://fr.wikipedia.org/wiki/Espace_affine")[espaces affines].]. On utilisera largement la propriété que si $B = A + #mvec[u]$, alors $#mvec[AB] = #mvec[u]$. Le vecteur $#mvec[AB]$ est le vecteur qui va de $A$ à $B$ et son unité est le  #qty("", "m").
 
 = Opération sur les vecteurs
 
+== Addition et relation de Chasles
+
+== Addition de vecteurs
+
+#align(center)[
+  #cetz.canvas({
+
+    let pcolor = black
+    let A = (0, 0)
+    let B = (5, 0)
+    let C = (2, 4)
+    let D = (7, 4)
+    line(B, D, stroke: (paint: black, thickness: 1pt, dash: "dashed"))
+    line(C, D, stroke: (paint: black, thickness: 1pt, dash: "dashed"))
+    dvec(A, B, label: mvec[u], color: red)
+    dvec(A, C, label: mvec[v], color: blue)
+    dvec(A, D, label: [$#mvec[u] + #mvec[v]$], color: green)
+  })]
+
+La somme de deux vecteurs est un vecteur qui représente la diagonale du parallélogramme formé par les deux vecteurs. 
+
+=== Relation de Chasles
+#align(center)[
+  #cetz.canvas({
+
+    let pcolor = black
+    let A = (0, 0)
+    let C = (10, 0)
+    let B = (7, 3)
+    dvec(A, B, label: mvec[AB], color: red, shrink: 4pt)
+    dvec(B, C, label: mvec[BC], color: blue, shrink: 4pt)
+    dvec(A, C, label: [$#mvec[AC]=#mvec[AB]+#mvec[BC]$], color: green, shrink: 4pt)
+    dpoint(A, label: "A", anchor: "north")
+    dpoint(B, label: "B", anchor: "north")
+    dpoint(C, label: "C", anchor: "north")
+  })]
+
+Si $A$, $B$ et $C$ sont 3 points, alors ils vérifient la relation de Chasles: $#mvec[AC] = #mvec[AB] + #mvec[AC]$.
 
 
-#theorem(title: align(center)[ Relation de Chasles], 
-footer: [Si $A$, $B$ et $C$ sont 3 points, alors ils vérifient la relation de Chasles: $#mvec[AC] = #mvec[AV] + #mvec[AC]$.])[
-  #align(center)[
-    #cetz.canvas({
 
-      let pcolor = black
-      let A = (0, 0)
-      let C = (10, 0)
-      let B = (7, 3)
-      dvec(A, B, label: mvec[AB], color: red, shrink: 4pt)
-      dvec(B, C, label: mvec[BC], color: blue, shrink: 4pt)
-      dvec(A, C, label: [$#mvec[AC]=#mvec[AB]+#mvec[BC]$], color: green, shrink: 4pt)
-      dpoint(A, label: "A", anchor: "north")
-      dpoint(B, label: "B", anchor: "north")
-      dpoint(C, label: "C", anchor: "north")
-    })]
-]
+=== Produit vecteur nombre
 
-#theorem(title: align(center)[Produit vecteur nombre], 
-footer: [Le produit d'un vecteur $#mvec[V]$ par un nombre $k$ est un vecteur noté $k#mvec[V]$ et est défini par:
-/ Sa direction: la même que $#mvec[V]$.
-/ Son sens: le même que $#mvec[V]$ si $k > 0$ et opposé si $k < 0$.
-/ Sa norme: $abs(k)#mvec[V]$.])[
-  #align(center)[
-    #cetz.canvas({
-      dvec((-2.5, 0), (2.5, 0), label: mvec[u], color: red)
-      dvec((-5, -1), (5, -1), label: mvec[2 u], color: green)
-      dvec((1.125, -2), (-1.125, -2), label: mvec[-1/2 u], color: blue, rev: true)
-    })]
-]
-== Produit d'un vecteur avec un nombre
+#align(center)[
+  #cetz.canvas({
+    dvec((-2.5, 0), (2.5, 0), label: mvec[u], color: red)
+    dvec((-5, -1), (5, -1), label: mvec[2 u], color: green)
+    dvec((1.125, -2), (-1.125, -2), label: mvec[-1/2 u], color: blue, rev: true)
+  })]
+
 
 Le produit d'un vecteur $#mvec[V]$ par un nombre $k$ est un vecteur noté $k#mvec[V]$ et est défini par:
 / Sa direction: la même que $#mvec[V]$.
 / Son sens: le même que $#mvec[V]$ si $k > 0$ et opposé si $k < 0$.
 / Sa norme: $abs(k)#mvec[V]$.
+
+On peut ainsi multiplier un vecteur par un nombre pour changer son intensité d'un facteur $k$. Si $k$ est négatif, le sens du vecteur est inversé.
 
 == Produit scalaire
 
@@ -104,14 +121,10 @@ Il permet de calculer les angles entre deux vecteurs, ou de projeter un vecteur 
 
 == Produit vectoriel
 
-#theorem(title: "Produit vectoriel", footer: [Le produit vectoriel de deux vecteurs $#mvec[u]$ et $#mvec[v]$ est un vecteur noté $#mvec[u] and #mvec[v]$ et est défini par:
-/ Sa direction: perpendiculaire au plan formé par $#mvec[u]$ et $#mvec[v]$.
-/ Son sens: donné par la règle de la main droite.
-/ Sa norme: $abs(#mvec[u] and #mvec[v]) = abs(#mvec[u]) dot abs(#mvec[v]) dot sin(theta)$
-])[
-#align(center)[
-  #cetz.canvas({
-  ortho(
+
+  #align(center)[
+    #cetz.canvas({
+      ortho(
     // x: 35.26deg,
     // y: 45deg,
     // z: 0deg,
@@ -119,19 +132,24 @@ Il permet de calculer les angles entre deux vecteurs, ou de projeter un vecteur 
       let pcolor = black
       let A = (0, 0)
       let B = (8, 0)
-      let C = (-1, 7)
+      let C = (-1, 4)
       let D = (0, 0, 5)
       dvec(A, B, label: mvec[u], color: red, shrink: 0, rotate_label: false)
       dvec(A, C, label: mvec[v], color: blue, shrink: 0, rotate_label: false)
-      dvec(A, D, label: mvec[$u and v$], color: green, shrink: 0, rotate_label: false)
-      // 
+      dvec(A, D, label: [$#mvec[u] and #mvec[v]$], color: green, shrink: 0, rotate_label: false)
+      //
       dangle3p(A, B, C, label: $theta$, radius:3, right: false)
       dangle3p(A, B, D, right: true, radius:.75)
       dangle3p(A, C, D, right: true, radius:.75)
     },
   )
-})
-]]
+    })
+  ]
+
+Le produit vectoriel de deux vecteurs $#mvec[u]$ et $#mvec[v]$ est un vecteur noté $#mvec[u] and #mvec[v]$ et est défini par:
+    / Sa direction: perpendiculaire au plan formé par $#mvec[u]$ et $#mvec[v]$.
+    / Son sens: donné par la règle de la main droite.
+    / Sa norme: $abs(#mvec[u] and #mvec[v]) = abs(#mvec[u]) dot abs(#mvec[v]) dot sin(theta)$
 
 Le produit vectoriel de deux vecteurs $#mvec[u]$ et $#mvec[v]$ est un vecteur noté $#mvec[u] and #mvec[v]$ et est défini par:
 / Sa direction: perpendiculaire au plan formé par $#mvec[u]$ et $#mvec[v]$.

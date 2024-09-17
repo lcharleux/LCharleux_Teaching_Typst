@@ -9,4 +9,7 @@ Ce dépôt contient des éléments de cours écrits en Typst.
 ### Statique des solides
 
 - Rappels sur les vecteurs: [MECA510_Statique_block1_Rappels.pdf](https://github.com/lcharleux/LCharleux_Teaching_Typst/raw/outputs/MECA510_Statique_block1_Rappels.pdf)
+
+### Divers 
+
 - Un bac à sable pour expérimenter: [demo.pdf](https://github.com/lcharleux/LCharleux_Teaching_Typst/raw/outputs/demo.pdf)

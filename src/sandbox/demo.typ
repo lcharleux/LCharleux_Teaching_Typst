@@ -9,9 +9,9 @@
 // #set math.equation(numbering: "(1)")
 
 // DOCUMENT SETUP
-#let course = "MECA510 - Statique"
-#let block = "Rappels"
-#let section = "MECA3-FISA"
+#let course = "Demo - Sandbox"
+#let block = "Expérimentations"
+#let section = "PAC"
 #let teacher = "Ludovic Charleux"
 #let email = "ludovic.charleux@univ-smb.fr"
 
@@ -21,7 +21,7 @@
   block: block,
   section: section,
   teacher: teacher,
-  email:email,
+  email: email,
   doc,
 )
 
@@ -89,9 +89,6 @@ $ mvec(v) = dispvcol(normalize(#a0)) $
 
 = Gregoire
 
-
-#strong(smallcaps("Exercices")) hhhhh #smallcaps("Exercices")
-
 = Classes
 
 #let data = ("name": "tutu", "label": "hello")
@@ -104,20 +101,30 @@ $ mvec(v) = dispvcol(normalize(#a0)) $
   }
 )
 
-#a0.map(str)
+= Repères en 3D
 
-#let a2 = (1, 2, 3)
-
-$mat(delim:"[", a2)$
-
-#let data = ((1, 2), (3, 4), (5, 6))
-#let m-data = data.map(x => ($W_(#x.at(0)#x.at(1))$,))
-#let matrix = math.mat(delim: "[", ..m-data)
-
-$ #matrix $
-
-#rotmat2D(90deg)
-
-rotation de 90° de #dispvcol(a0) est #dispvcol(arotz90(a0))
-
-#arotz90(a0)
+#align(center)[
+  #cetz.canvas({
+    ortho(
+    x: 30deg,
+    y: 30deg,
+    // z: 0deg,
+    {
+      let O0 = (0, 0, 0)
+      let x = (3, 0, 0)
+      let y = (0, 3, 0)
+      let z = (0, 0, 3)
+      let M = (10, 5, 1)
+      catmull((12,3, 1), (10,6,1), (8,4,1), (10,2,1), tension: .4, stroke: black, close:true, name:"potato", fill: yellow.lighten(50%))
+      content((name:"potato", anchor:90%), anchor: "north", padding: .3)[$(S_1)$]
+      dpoint(O0, label: [$O_0$], anchor: "north")
+      dvec(O0, x, label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      dvec(O0, y, label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      dvec(O0, z, label: [$#mvec[z]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      dvec(O0, M, label: [$#mvec[$O_0M$]_0$], color: blue, shrink: 4pt, rotate_label: false)
+      dpoint(O0, label: [$O_0$], anchor: "north")
+      dpoint(M, label: [$M$], anchor: "north-west", color:red)
+    },
+  )
+  })
+]

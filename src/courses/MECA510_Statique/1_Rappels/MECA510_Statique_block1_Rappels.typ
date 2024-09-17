@@ -27,8 +27,6 @@
 
 
 
-
-
 // #let theorem(body, title: none, footer: none) = showybox(
 //   title: title,
 //   frame: (
@@ -236,8 +234,12 @@ Il a les propriétés suivantes:
 
 Le poduit mixte des vecteurs $#mvec[u]$, $#mvec[v]$ et $#mvec[w]$ est noté$( #mvec[u], #mvec[v], #mvec[w] )$ et est défini par:
 
-$ ( #mvec[u], #mvec[v], #mvec[w] ) = (#mvec[u] and #mvec[v]) dot  #mvec[w] $
+$ ( #mvec[u], #mvec[v], #mvec[w] ) & = (#mvec[u] and #mvec[v]) dot  #mvec[w]$
 
-
+Il a des propriétés similaires au produit vectoriel:
+- Il est anti-commutatif: $( #mvec[u], #mvec[v], #mvec[w] ) = - ( #mvec[v], #mvec[u], #mvec[w] )$.
+- Il est nul si $#mvec[u]$, $#mvec[v]$ et $#mvec[w]$ sont coplanaires.
+- Sa norme correspond à 6 fois le volume du tétraèdre $"ABCD"$ formé par $#mvec[u]$, $#mvec[v]$ et $#mvec[w]$.
+- C'est aussi le déterminant de la matrice formée par les 3 vecteurs.
 
 

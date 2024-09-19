@@ -25,9 +25,9 @@
   email: none,
   doc,
 ) = {
-  show figure.caption: set text(8pt)
+  show figure.caption: set text(10pt)
   // set text(font: "PT Sans", size: 10pt)
-  // set text(font: "Linux Libertine", size: 11pt)
+  set text(font: "Linux Libertine", size: 12pt)
 
   set par(justify: true)
   set heading(numbering: "1.a")
@@ -96,7 +96,7 @@
           #link("mailto:" + email, email) \
           Polytech Annecy Chambéry \
         ]
-      #outline(title: "Plan du cours")
+      #outline(title: "Plan du cours", depth:2, indent:auto)
     ],
   )
   show link: this => {

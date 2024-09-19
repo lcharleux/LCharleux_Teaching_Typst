@@ -121,10 +121,35 @@ $ mvec(v) = dispvcol(normalize(#a0)) $
       dvec(O0, x, label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
       dvec(O0, y, label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
       dvec(O0, z, label: [$#mvec[z]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
-      dvec(O0, M, label: [$#mvec[$O_0M$]_0$], color: blue, shrink: 4pt, rotate_label: false)
+      dvec(O0, M, label: [$#mvec[$O_0M$]$], color: blue, shrink: 4pt, rotate_label: false)
       dpoint(O0, label: [$O_0$], anchor: "north")
       dpoint(M, label: [$M$], anchor: "north-west", color:red)
     },
   )
   })
 ]
+
+= Torseurs
+
+
+#let torseur6(rx:0, ry:0, rz:0, mx:0, my:0, mz:0, p:[$O_0$], basis:0) = {
+  let m = math.mat(delim:"{", (rx,mx), (ry,my), (rz,mz))
+  $attach(#m, br: #p ","  cal(B)_#str(basis) )$
+}
+
+$ torseur6(rx: F_y , mz: L F_y  ) $
+
+
+#let torseur2(R:mvec[0] , M:mvec[0], p:[$O_0$]) = {
+  let m = math.mat(delim:"{", (R,), (M,))
+  $attach(#m, br: #p )$
+}
+
+$ torseur2(R: #mvec[F]_y , p:A ) $
+
+#let torseur1(T:"0") = {
+  let m = math.mat(delim:"{", (T,))
+  $attach(#m)$
+}
+
+$ torseur1(T: T_0 ) $

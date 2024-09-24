@@ -153,3 +153,66 @@ $ torseur2(R: #mvec[F]_y , p:A ) $
 }
 
 $ torseur1(T: T_0 ) $
+
+= RDM
+
+
+#let load(x) = 1 + x - calc.pow(x,2) / 8
+
+#align(center)[
+  #cetz.canvas({
+    ortho(
+    x: 30deg,
+    y: 30deg,
+    // z: 0deg,
+    { 
+      let L=10
+      let Nv= 20
+      let O0 = (0, 0, 0)
+      let A = (L, 0, 0)
+      let x = (3, 0, 0)
+      let y = (0, 3, 0)
+      let z = (0, 0, 3)
+      dpoint(O0, label: [$O_0$], anchor: "north")
+      dpoint(A, label: [$A$], anchor: "west")
+      line(O0, A, stroke: (paint: black, thickness: 1pt))
+      for i in range(Nv+1) {
+        let x = L* i / Nv
+        let y = load(x)
+        let B = (x, 0, 0)
+        let C = (x, y, 0)
+        // dpoint(B, label: [$B B_#str(i)$], anchor: "north")
+        dvec(C, B, label: none, color: red, shrink: 0, rotate_label: false, thickness: 1pt)
+        
+      }
+      for i in range(Nv) {
+        let x = L* i / Nv
+        let x2 = L* (i+1) / Nv
+        let y = load(x)
+        let y2 = load(x2)
+        let P = (x, y, 0)
+        let P2 = (x2, y2, 0)
+        // dpoint(B, label: [$B B_#str(i)$], anchor: "north")
+        line(P, P2, stroke: (paint: red, thickness: 1pt))
+        
+      }
+      dvec(O0, x, label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt, anchor:"north", label_fill:none)
+      dvec(O0, y, label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      dvec(O0, z, label: [$#mvec[z]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      // let x = (3, 0, 0)
+      // let y = (0, 3, 0)
+      // let z = (0, 0, 3)
+      // let M = (10, 5, 1)
+      // catmull((12,3, 1), (10,6,1), (8,4,1), (10,2,1), tension: .4, stroke: black, close:true, name:"potato", fill: yellow.lighten(50%))
+      // content((name:"potato", anchor:90%), anchor: "north", padding: .3)[$(S_1)$]
+      // dpoint(O0, label: [$O_0$], anchor: "north")
+      // dvec(O0, x, label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      // dvec(O0, y, label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      // dvec(O0, z, label: [$#mvec[z]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      // dvec(O0, M, label: [$#mvec[$O_0M$]$], color: blue, shrink: 4pt, rotate_label: false)
+      // dpoint(O0, label: [$O_0$], anchor: "north")
+      // dpoint(M, label: [$M$], anchor: "north-west", color:red)
+    },
+  )
+  })
+]

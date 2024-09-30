@@ -1,6 +1,6 @@
 // TEMPLATE IMPORT
 #import "../templates/conf.typ": conf, todo, comment, idea, note, important
-#import "../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod, arrdotprod
+#import "../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod, arrdotprod, torseur1, torseur2, torseur6
 #import "@preview/unify:0.6.0": num, qty, numrange, qtyrange
 #import "@preview/cetz:0.2.2"
 #import "@preview/showybox:2.0.1": showybox
@@ -132,25 +132,16 @@ $ mvec(v) = dispvcol(normalize(#a0)) $
 = Torseurs
 
 
-#let torseur6(rx: 0, ry: 0, rz: 0, mx: 0, my: 0, mz: 0, p: [$O_0$], basis: 0) = {
-  let m = math.mat(delim: "{", (rx, mx), (ry, my), (rz, mz))
-  $attach(#m, br: #p ","  cal(B)_#str(basis) )$
-}
+
 
 $ torseur6(rx: F_y , mz: L F_y  ) $
 
 
-#let torseur2(R: mvec[0], M: mvec[0], p: [$O_0$]) = {
-  let m = math.mat(delim: "{", (R,), (M,))
-  $attach(#m, br: #p )$
-}
+
 
 $ torseur2(R: #mvec[F]_y , p:A ) $
 
-#let torseur1(T: "0") = {
-  let m = math.mat(delim: "{", (T,))
-  $attach(#m)$
-}
+
 
 $ torseur1(T: T_0 ) $
 

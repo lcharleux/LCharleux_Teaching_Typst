@@ -27,7 +27,7 @@
 ) = {
   show figure.caption: set text(10pt)
   // set text(font: "PT Sans", size: 10pt)
-  set text(font: "Linux Libertine", size: 12pt)
+  set text(font: "Linux Libertine", size: 10pt)
 
   set par(justify: true)
   set heading(numbering: "1.a")

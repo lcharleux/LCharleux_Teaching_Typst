@@ -2,7 +2,7 @@
 
 #import cetz.draw: *
 // DRAWABLE VECTOR
-#let dvec(start, end, label: none, padding: 2pt, anchor: "center", rev: false, color: black, shrink: 1pt, thickness: 2pt, shadow_color: none, rotate_label: false, mark: (end: ">"), label_fill: white, anchor_at:50%) = {
+#let dvec(start, end, label: none, padding: 2pt, anchor: "center", rev: false, color: black, shrink: 1pt, thickness: 2pt, shadow_color: none, rotate_label: false, mark: (end: ">"), label_fill: white, anchor_at: 50%) = {
   hide(line(start, end, on-layer: -2, name: "shadow"))
   hide(line(end, start, on-layer: -2, name: "shadow-rev"))
   line((name: "shadow", anchor: shrink), (name: "shadow-rev", anchor: shrink), mark: mark, on-layer: -1, name: "vec", stroke: (paint: color, thickness: thickness))
@@ -17,9 +17,9 @@
 
   if label != none {
     if not rev {
-      content((name:"shadow", anchor:anchor_at), clabel, anchor: anchor,offset: 5pt, angle: rangle, padding: padding, fill: label_fill, frame: "rect", stroke: none)
+      content((name: "shadow", anchor: anchor_at), clabel, anchor: anchor, offset: 5pt, angle: rangle, padding: padding, fill: label_fill, frame: "rect", stroke: none)
     } else {
-      content((name:"shadow-rev", anchor:anchor_at), clabel, anchor: anchor,offset: 5pt, angle: rangle, padding: padding, fill: label_fill, frame: "rect", stroke: none)
+      content((name: "shadow-rev", anchor: anchor_at), clabel, anchor: anchor, offset: 5pt, angle: rangle, padding: padding, fill: label_fill, frame: "rect", stroke: none)
     }
   }
 }
@@ -126,7 +126,7 @@
   out
 }
 
-#let dimension_line(start, end, inv: false, label: none, offs: 2, ratio: 90%) = {
+#let dimension_line(start, end, inv: false, label: none, offs: 2, ratio: 90%, invert_label: false, anchor:"center") = {
   let AB = arrsub(end, start)
   let u = normalize(AB)
   let v = arotz90(u, inv: inv)
@@ -135,7 +135,27 @@
   let D = arradd(start, v2)
   line(start, D, stroke: (paint: black, thickness: 0.5pt), name: "l0")
   line(end, C, stroke: (paint: black, thickness: 0.5pt), name: "l1")
-  dvec((name: "l0", anchor: ratio), (name: "l1", anchor: ratio), label: label, color: black, shrink: 1pt, rotate_label: true, mark: (end: "straight", start: "straight"), thickness: 1pt)
+  if invert_label {
+    dvec((name: "l1", anchor: ratio), (name: "l0", anchor: ratio), label: label, color: black, shrink: 1pt, rotate_label: true, mark: (end: "straight", start: "straight"), thickness: 1pt, anchor:anchor)
+  } else {
+    dvec((name: "l0", anchor: ratio), (name: "l1", anchor: ratio), label: label, color: black, shrink: 1pt, rotate_label: true, mark: (end: "straight", start: "straight"), thickness: 1pt, anchor: anchor)
+  }
 }
 
 #let mvec(what) = $accent(what, ->)$
+
+
+#let torseur6(rx: 0, ry: 0, rz: 0, mx: 0, my: 0, mz: 0, p: [$O_0$], basis: 0) = {
+  let m = math.mat(delim: "{", (rx, mx), (ry, my), (rz, mz))
+  $attach(#m, br: #p ","  cal(B)_(basis) )$
+}
+
+#let torseur2(R: mvec[0], M: mvec[0], p: [$O_0$]) = {
+  let m = math.mat(delim: "{", (R,), (M,))
+  $attach(#m, br: #p )$
+}
+
+#let torseur1(T: "0") = {
+  let m = math.mat(delim: "{", (T,))
+  $attach(#m)$
+}

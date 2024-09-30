@@ -1,6 +1,6 @@
 // TEMPLATE IMPORT
 #import "../../../templates/conf.typ": conf, todo, comment, idea, note, important
-#import "../../../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec
+#import "../../../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod
 #import "@preview/unify:0.6.0": num, qty, numrange, qtyrange
 #import "@preview/cetz:0.2.2"
 #import "@preview/showybox:2.0.1": showybox
@@ -166,14 +166,7 @@ Il a les propriétés suivantes:
 
 == Produit vectoriel
 
-#let arrcrossprod(a0, a1) = {
-  let out = (
-    a0.at(1) * a1.at(2) - a0.at(2) * a1.at(1),
-    a0.at(2) * a1.at(0) - a0.at(0) * a1.at(2),
-    a0.at(0) * a1.at(1) - a0.at(1) * a1.at(0),
-  )
-  out
-}
+
 
 #align(center)[
   #cetz.canvas({

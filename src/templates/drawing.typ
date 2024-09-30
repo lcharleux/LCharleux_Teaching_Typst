@@ -2,7 +2,7 @@
 
 #import cetz.draw: *
 // DRAWABLE VECTOR
-#let dvec(start, end, label: none, padding: 4pt, anchor: "center", rev: false, color: black, shrink: 1pt, thickness: 2pt, shadow_color: none, rotate_label: true, mark: (end: ">"), label_fill: white) = {
+#let dvec(start, end, label: none, padding: 2pt, anchor: "center", rev: false, color: black, shrink: 1pt, thickness: 2pt, shadow_color: none, rotate_label: false, mark: (end: ">"), label_fill: white, anchor_at:50%) = {
   hide(line(start, end, on-layer: -2, name: "shadow"))
   hide(line(end, start, on-layer: -2, name: "shadow-rev"))
   line((name: "shadow", anchor: shrink), (name: "shadow-rev", anchor: shrink), mark: mark, on-layer: -1, name: "vec", stroke: (paint: color, thickness: thickness))
@@ -17,9 +17,9 @@
 
   if label != none {
     if not rev {
-      content("vec.mid", clabel, offset: 5pt, angle: rangle, padding: padding, anchor: anchor, fill: label_fill, frame: "rect", stroke: none)
+      content((name:"shadow", anchor:anchor_at), clabel, anchor: anchor,offset: 5pt, angle: rangle, padding: padding, fill: label_fill, frame: "rect", stroke: none)
     } else {
-      content("vec.mid", clabel, offset: 5pt, angle: rangle, padding: padding, anchor: anchor, fill: label_fill, frame: "rect", stroke: none)
+      content((name:"shadow-rev", anchor:anchor_at), clabel, anchor: anchor,offset: 5pt, angle: rangle, padding: padding, fill: label_fill, frame: "rect", stroke: none)
     }
   }
 }
@@ -109,6 +109,22 @@
   (k * a.at(1), -k * a.at(0))
 }
 
+#let arrcrossprod(a0, a1) = {
+  let out = (
+    a0.at(1) * a1.at(2) - a0.at(2) * a1.at(1),
+    a0.at(2) * a1.at(0) - a0.at(0) * a1.at(2),
+    a0.at(0) * a1.at(1) - a0.at(1) * a1.at(0),
+  )
+  out
+}
+
+#let arrdotprod(a0, a1) = {
+  let out = 0
+  for (v0, v1) in a0.zip(a1) {
+    out += v0 * v1
+  }
+  out
+}
 
 #let dimension_line(start, end, inv: false, label: none, offs: 2, ratio: 90%) = {
   let AB = arrsub(end, start)

@@ -27,14 +27,14 @@
 ) = {
   show figure.caption: set text(10pt)
   // set text(font: "PT Sans", size: 10pt)
-  set text(font: "Linux Libertine", size: 10pt)
+  set text(font: "Linux Libertine", size: 11pt)
 
   set par(justify: true)
   set heading(numbering: "1.a")
   show bibliography: set heading(numbering: "1")
 
   show bibliography: it => {
-    set text(size: 7pt)
+    set text(size: 10pt)
     show heading: set text(size: 12pt)
     it
   }

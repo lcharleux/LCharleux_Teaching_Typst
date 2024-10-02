@@ -159,3 +159,5 @@
   let m = math.mat(delim: "{", (T,))
   $attach(#m)$
 }
+
+#let part_label(coord, label, color:black, anchor: "south", padding: .1) =  content(coord, text(color, label), anchor:anchor, frame:"rect", padding: padding, stroke: (paint: color, thickness: 2pt), fill: white)

@@ -29,6 +29,8 @@
 
 = Cours
 
+#todo[MAJ du cours]
+
 = Exercices
 
 == Dispositif de bridage
@@ -416,6 +418,68 @@ On considère une poutre encastrée en $O_0$ et soumise à une force répartie $
 3. Faire un bilan d'actions mécaniques.
 4. Ecrire l'équilibre de la poutre et en déduire les actions de liaisons.
 
+== Poutre sur 2 appuis et force concentrée
+
+#align(center)[
+
+  #cetz.canvas({
+    let L = 10
+    let nhatch = 8
+    let O0 = (0, 0)
+    let x = (2, 0, 0)
+    let y = (0, 2, 0)
+    let bold = 2pt
+    let light = .5pt
+    let fat = 3pt
+    let r = -30deg
+    let g = 4.
+    let Nf = 10
+    let p = 2.5
+    let a = 4 
+    let A = (a, 0)
+
+    // grid((0,0), (L, 8), stroke: (paint:black.lighten(50%), thickness:.2pt), step: .2)
+    // grid((0, 0), (L, 8), stroke: (paint: black.lighten(50%), thickness: .2pt))
+    // GRID
+
+
+    line(O0, (L, 0), stroke: (paint: blue, thickness: bold))
+    line((-1, -1), (-1, 1), stroke: (paint: black, thickness: bold))
+    for i in range(nhatch + 1) {
+      let P = (-1, i * 2 / nhatch - 1)
+      let Q = (-1.5, i * 2 / nhatch - 1.5)
+      line(P, Q, stroke: (paint: black, thickness: light))
+    }
+    circle((0, 0), radius: .5, stroke: (paint: black, thickness: bold), fill: white)
+    line((-1, 0), (0, 0), stroke: (paint: black, thickness: bold))
+
+    dpoint((L, 0), label: [$B$], anchor: "north-west")
+   
+    line((L, 0), (L, -1), stroke: (paint: black, thickness: bold))
+    line((L - 1, -1), (L + 1, -1), stroke: (paint: black, thickness: bold))
+    for i in range(nhatch + 1) {
+      let P = (L -1 + i * 2 / nhatch, -1)
+      let Q = (L -1 + i * 2 / nhatch - .5, -1.5)
+      line(P, Q, stroke: (paint: black, thickness: light))
+    }
+    circle((L, -.2), radius: .2, stroke: (paint: black, thickness: bold), fill: white)
+    dvec((L + .5, 0), arradd((L + .5, 0), x), label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat)
+    dvec(O0, arradd(O0, y), label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat, padding: 4pt)
+    dvec(arradd(A, (0, 2)), A, label: [$#mvec[F]$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding : 4pt)
+    dpoint(O0, label: [$O_0$], anchor: "north-west")
+    dpoint(A, label: [$A$], anchor: "north-west")
+    dimension_line((0, 0), (L, 0), label: [$L$], inv: true, offs: 2)
+    dimension_line(O0, A, label: [$a$], inv: true, offs: 1)
+  })
+]
+
+On considère une poutre encastrée en $O_0$ et soumise à une force concentrée $#mvec[F] = -F  #mvec[y]_0$ en $A$.
+
+=== Questions
+1. Faire un bilan d'actions mécaniques.
+2. Ecrire l'équilibre de la poutre et en déduire les actions de liaisons.
+
+
 // ==  Pieds du module lunaire Apollo
 
 
@@ -494,7 +558,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force répartie $
     let G = (xA + L / 2, H / 2)
 
     // grid((0,0), (L, 8), stroke: (paint:black.lighten(50%), thickness:.2pt), step: .2)
-    grid((0, 0), (xA + L + 1, 8), stroke: (paint: black.lighten(50%), thickness: .2pt))
+    // grid((0, 0), (xA + L + 1, 8), stroke: (paint: black.lighten(50%), thickness: .2pt))
     // GRID
 
 

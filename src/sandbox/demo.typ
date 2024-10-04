@@ -1,6 +1,6 @@
 // TEMPLATE IMPORT
 #import "../templates/conf.typ": conf, todo, comment, idea, note, important
-#import "../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod, arrdotprod, torseur1, torseur2, torseur6
+#import "../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod, arrdotprod, torseur1, torseur2, torseur6, part_label
 #import "@preview/unify:0.6.0": num, qty, numrange, qtyrange
 #import "@preview/cetz:0.2.2"
 #import "@preview/showybox:2.0.1": showybox
@@ -310,3 +310,60 @@ Cas du champ de vitesse d'un solide indéformable.
     // dpoint(M, label: [$M$], anchor: "north-west", color:red)
   })
 ]
+
+= Liaisons 3D 
+
+#let polygon(verts, ..args) = {
+  let n = verts.len()
+  for i in range(n) {
+    let A = verts.at(i)
+    let B = verts.at(calc.rem(i + 1, n))
+    line(A, B, ..args)
+  }
+}
+
+#align(center)[
+  #cetz.canvas({
+    ortho(
+    // x: 30deg,
+    // y: 30deg,
+    // z: 0deg,
+    {
+      let R = (0, 0, 7)
+      let MO = (0, 0, 20)
+      let O0 = (0, 0, 0)
+      let nr = 10
+      let ntheta = 4
+      let rmax = 5
+      let rmin = 1
+      let mscale = .1
+      let x = (3, 0, 0)
+      let y = (0, 3, 0)
+      let z = (0, 0, 3)
+      let ntheta = 20
+      let radius = 2
+      // circle(O0, radius:radius)
+      
+      for theta in range(ntheta){
+        let theta0 = 2 * calc.pi * theta / ntheta
+        let theta1 = 2 * calc.pi * (theta + 1) / ntheta
+        let verts = (
+          (radius*calc.cos(theta0), radius*calc.sin(theta0), 0),
+          (radius*calc.cos(theta1), radius*calc.sin(theta1), 0),
+          (radius*calc.cos(theta1), radius*calc.sin(theta1), 2),
+          (radius*calc.cos(theta0), radius*calc.sin(theta0), 2),
+        )
+        polygon(verts, stroke: (paint: black, thickness: 1pt), fill:white)
+      }
+      circle((0,0, 2), radius:radius, stroke: (paint: black, thickness: 1pt), fill:white)
+
+
+
+    dvec(O0, x, label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt, anchor:"north", label_fill:none)
+      dvec(O0, y, label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+      dvec(O0, z, label: [$#mvec[z]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
+    },
+  )
+  })
+]
+

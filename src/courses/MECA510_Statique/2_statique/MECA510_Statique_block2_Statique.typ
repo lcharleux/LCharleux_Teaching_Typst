@@ -31,6 +31,254 @@
 
 #todo[MAJ du cours]
 
+== Mécanismes
+
+
+
+=== Tableau des liaisons
+
+#let frame1 = {
+  cetz.canvas({
+    let O = (0, 0, 0)
+    let x = (1, 0, 0)
+    let y = (0, 1, 0)
+    let vrad = 0.3
+    dvec(O, arradd(O, x), label: [$#mvec[x]_1$], color: green, shrink: 0, rotate_label: false, thickness: 1pt, label_fill: none, anchor: "south", padding: 6pt, anchor_at: 100%)
+    dvec(O, arradd(O, y), label: [$#mvec[y]_1$], color: green, shrink: 0, rotate_label: false, thickness: 1pt, label_fill: none, anchor: "east", padding: 6pt, anchor_at: 100%)
+    circle(O, radius: vrad, stroke: green, fill: white)
+
+    line(O, arradd(O, x), stroke: (paint: green, thickness: 1pt))
+    dpoint(O, label: [$#mvec[z]_0$], anchor: "north-east", color: green, padding: 8pt)
+
+  })
+}
+
+#let frame2 = {
+  cetz.canvas({
+    let O = (0, 0, 0)
+    let x = (1, 0, 0)
+    let y = (0, 1, 0)
+    let vrad = 0.3
+    dvec(O, arradd(O, x), label: [$#mvec[z]_1$], color: green, shrink: 0, rotate_label: false, thickness: 1pt, label_fill: none, anchor: "south", padding: 6pt, anchor_at: 100%)
+    dvec(O, arradd(O, y), label: [$#mvec[y]_1$], color: green, shrink: 0, rotate_label: false, thickness: 1pt, label_fill: none, anchor: "east", padding: 6pt, anchor_at: 100%)
+    circle(O, radius: vrad, stroke: green, fill: white)
+    for theta in (45deg, 135deg, 225deg, 315deg) {
+      let P = (vrad * calc.cos(theta), vrad * calc.sin(theta), 0)
+      line(O, P, stroke: (paint: green, thickness: 1pt))
+    }
+    content(O, anchor: "north-east", padding: 8pt)[#text(fill: green)[$#mvec[x]_0$]]
+  })
+}
+
+#let pivot1 = {
+  cetz.canvas({
+    let A = (0, 0)
+    line((0, -1), A, stroke: (paint: red, thickness: 2pt))
+    line((0, 1), A, stroke: (paint: blue, thickness: 2pt))
+    circle(A, radius: .5, stroke: (paint: red, thickness: 2pt), fill: white)
+    dpoint(A, label: [$A$], anchor: "north-east", color: black, padding: 12pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((0, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let pivot2 = {
+  cetz.canvas({
+    let pw = 0.75
+    let A = (0, 0)
+    line((0, -1), (0, -pw / 2), stroke: (paint: red, thickness: 2pt))
+    rect((-1, -pw / 2), (1, pw / 2), stroke: (paint: red, thickness: 2pt))
+
+    line((-1.5, 1), (-1.5, 0), stroke: (paint: blue, thickness: 2pt))
+    line((-1.5, 0), (1.5, 0), stroke: (paint: blue, thickness: 2pt))
+    line((-1.25, pw / 1.5), (-1.25, -pw / 1.5), stroke: (paint: blue, thickness: 2pt))
+    line((1.25, pw / 1.5), (1.25, -pw / 1.5), stroke: (paint: blue, thickness: 2pt))
+    // circle(A, radius: .5, stroke:(paint: red, thickness:2pt), fill: white)
+    dpoint(A, label: [$A$], anchor: "north-east", color: black, padding: 14pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((-1.5, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let pivot_glissant1 = {
+  cetz.canvas({
+    let A = (0, 0)
+    line((0, -1), A, stroke: (paint: red, thickness: 2pt))
+    circle(A, radius: .5, stroke: (paint: red, thickness: 2pt), fill: white)
+    line((0, 1), A, stroke: (paint: blue, thickness: 2pt))
+
+    dpoint(A, label: [$A$], anchor: "north-east", color: black, padding: 12pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((0, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let pivot_glissant2 = {
+  cetz.canvas({
+    let pw = 0.75
+    let A = (0, 0)
+    line((0, -1), (0, -pw / 2), stroke: (paint: red, thickness: 2pt))
+    rect((-1, -pw / 2), (1, pw / 2), stroke: (paint: red, thickness: 2pt))
+
+    line((-1.5, 1), (-1.5, 0), stroke: (paint: blue, thickness: 2pt))
+    line((-1.5, 0), (1.5, 0), stroke: (paint: blue, thickness: 2pt))
+    dpoint(A, label: [$A$], anchor: "north-east", color: black, padding: 14pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((-1.5, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let glissiere1 = {
+  cetz.canvas({
+    let radius = 0.5
+    let A = (0, 0)
+    line((0, -1), A, stroke: (paint: red, thickness: 2pt))
+    rect((-radius, -radius), (radius, radius), stroke: (paint: red, thickness: 2pt), fill: white)
+
+    line((0, 1), A, stroke: (paint: blue, thickness: 2pt))
+    line((-.4, -.4), (.4, .4), stroke: (paint: blue, thickness: 2pt))
+    line((.4, -.4), (-.4, .4), stroke: (paint: blue, thickness: 2pt))
+
+    dpoint(A, label: [$A$], anchor: "north-east", color: black, padding: 16pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((0, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let glissiere2 = {
+  cetz.canvas({
+    let pw = 0.75
+    let A = (0, 0)
+    line((0, -1), (0, -pw / 2), stroke: (paint: red, thickness: 2pt))
+    line((-1.5, 0), (1.5, 0), stroke: (paint: blue, thickness: 2pt))
+
+    rect((-1, -pw / 2), (1, pw / 2), stroke: (paint: red, thickness: 2pt), fill: white)
+
+    line((-1.5, 1), (-1.5, 0), stroke: (paint: blue, thickness: 2pt))
+    dpoint(A, label: [$A$], anchor: "east", color: black, padding: 6pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((-1.5, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let encastrement = {
+  cetz.canvas({
+    let radius = 0.5
+    let A = (0, 0)
+    line((0, -1), A, stroke: (paint: red, thickness: 2pt))
+    // rect((-radius, - radius),(radius, radius), stroke:(paint: red, thickness:2pt), fill: white)
+
+    line((0, 1), A, stroke: (paint: blue, thickness: 2pt))
+    arc((.3, 0), start: 0deg, delta: 90deg, radius: .3, mode: "PIE", stroke: (paint: blue, thickness: 2pt), fill: blue)
+    line((-1, 0), (1, 0), stroke: (paint: red, thickness: 2pt))
+
+    // line((-.4,-.4), (.4, .4), stroke: (paint: blue, thickness: 2pt))
+    // line((.4,-.4), (-.4, .4), stroke: (paint: blue, thickness: 2pt))
+
+    // dpoint(A, label: [$A$], anchor: "north-east", color: black, padding:16pt)
+
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((0, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let rotule = {
+  cetz.canvas({
+    let A = (0, 0)
+    line((0, -1), A, stroke: (paint: red, thickness: 2pt))
+    circle(A, radius: .5, stroke: (paint: red, thickness: 2pt), fill: white)
+    line((0, 1.), (0, .6), stroke: (paint: blue, thickness: 2pt))
+    arc((0, .6), start: 90deg, delta: -135deg, radius: .6, stroke: (paint: blue, thickness: 2pt))
+    arc((0, .6), start: 90deg, delta: 135deg, radius: .6, stroke: (paint: blue, thickness: 2pt))
+    dpoint(A, label: [$A$], anchor: "north-east", color: black, padding: 14pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((0, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+#let ponctuelle = {
+  cetz.canvas({
+    let A = (0, 0)
+    line((0, -1), A, stroke: (paint: red, thickness: 2pt))
+    line((0, 1), A, stroke: (paint: blue, thickness: 2pt))
+    line((-.5, .3), (.5, .3), stroke: (paint: blue, thickness: 2pt))
+    circle(A, radius: .3, stroke: (paint: red, thickness: 2pt), fill: white)
+
+    dpoint((0, .3), label: [$A$], anchor: "north-east", color: black, padding: 12pt)
+    part_label((0, -1), $0$, color: red, anchor: "north-west")
+    part_label((0, 1), $1$, color: blue, anchor: "south-east")
+  })
+}
+
+
+
+#table(
+  columns: (1fr, 1fr, 1.2fr, 1fr, 1fr),
+  align: (center + horizon, center + horizon, center + horizon, center + horizon),
+  table.header[Liaison][#frame1][#frame2][Action Méca. \ $ torseur1(T: F_(12) ) $ ][ Tors. Ciné. \ $ torseur1(T: V_(2 slash 1) ) $],
+  [*Encastrement*], encastrement, [], [$torseur6(rx: X_(12), ry: Y_(12), rz: Z_(12) , mx: L_(12), my: M_(12), mz: N_(12), basis:1, p:"A"  )$], [$torseur6(basis:1, p:"A"  )$],
+  [*Pivot* \ - Axe $(A, #mvec[z])$], pivot1, pivot2, [$torseur6(rx: X_(12), ry: Y_(12), rz: Z_(12) , mx: L_(12), my: M_(12), basis:1, p:"A"  )$], [$torseur6(rz: Omega_z,  basis:1, p:"A"  )$],
+  [*Pivot glissant* \ - Axe $(A, #mvec[z])$], pivot_glissant1, pivot_glissant2, [$torseur6(rx: X_(12), ry: Y_(12), rz:0 , mx: L_(12), my: M_(12), basis:1, p:"A"  )$], [$torseur6(mz: V_z, rz: Omega_z,  basis:1, p:"A"  )$],
+  [*Glissière* \ - Axe $(A, #mvec[z])$], glissiere1, glissiere2, [$torseur6(rx: X_(12), ry: Y_(12), rz:0 , mx: L_(12), my: M_(12), mz:M_(12), basis:1, p:"A"  )$], [$torseur6(mz: V_z,  basis:1, p:"A"  )$],
+  [*Rotule* \ - Centre $A$], rotule, [], [$torseur6(rx: X_(12), ry: Y_(12), rz:Z_(12), basis:1, p:"A"  )$], [$torseur6(rx: Omega_x, ry: Omega_y, rz: Omega_z,  basis:1, p:"A"  )$],
+  [*Ponctuelle* \ - Centre $A$ \ - Normale $#mvec[y]_1$], ponctuelle, [], [$torseur6(ry: Y_(12), basis:1, p:"A"  )$], [$torseur6(rx: Omega_x, ry: Omega_y, rz: Omega_z, mx:V_x, mz:V_Z, basis:1, p:"A"  )$],
+)
+
+
+== Actions de contact
+
+#let coulomb_friction(psilabel: $psi_0$, Fn: 3.5, Ft: 2, psi0: 45deg) = {
+  cetz.canvas({
+    let I = (0, 0)
+    let radius0 = 5
+    let angular_span0 = 30deg
+    let radius1 = 3
+    let angular_span1 = 60deg
+    let radpsi = 4
+
+    let bold = 2pt
+    let medium = 1pt
+    let light = .5pt
+    let x = (1, 0, 0)
+    let y = (0, 1, 0)
+
+    arc(I, start: 90deg, delta: angular_span0, radius: radius0, stroke: (paint: black, thickness: medium), name: "arc01")
+    arc(I, start: 90deg, delta: -angular_span0, radius: radius0, stroke: (paint: black, thickness: medium), name: "arc02")
+    arc(I, start: -90deg, delta: -angular_span1, radius: radius1, stroke: (paint: blue, thickness: medium), name: "arc11")
+    arc(I, start: -90deg, delta: angular_span1, radius: radius1, stroke: (paint: blue, thickness: medium), name: "arc12")
+    dvec(I, arradd(I, (Ft, Fn)), label: [$#mvec[F]_(01)$], color: red, shrink: 0, rotate_label: false, thickness: medium, anchor: "west", anchor_at: 100%)
+    dvec(I, arradd(I, (0, Fn)), label: [$#mvec[F]_N$], color: red, shrink: 0, rotate_label: false, thickness: medium, anchor: "south-east", anchor_at: 100%)
+    dvec(I, arradd(I, (Ft, 0)), label: [$#mvec[F]_T$], color: red, shrink: 0, rotate_label: false, thickness: medium, anchor: "west", anchor_at: 100%)
+    dvec(I, arradd(I, x), label: [$#mvec[t]$], color: green, shrink: 0, rotate_label: false, thickness: bold, anchor: "north", padding: 10pt, label_fill: none)
+    dvec(I, arradd(I, y), label: [$#mvec[n]$], color: green, shrink: 0, rotate_label: false, thickness: bold, anchor: "center")
+    dpoint(I, label: [$I$], anchor: "north", padding: 8pt)
+    line((Ft, 0), (Ft, Fn), stroke: (paint: black, thickness: light))
+    line((0, Fn), (Ft, Fn), stroke: (paint: black, thickness: light))
+    line(I, (calc.cos(90deg  - psi0) * radpsi, calc.sin(90deg  - psi0) * radpsi), stroke: (paint: orange, thickness: light))
+    dangle3p(I, (0, 1), (calc.cos(90deg  - psi0) * radpsi, calc.sin(90deg  - psi0) * radpsi), label: psilabel, color: orange, mark: (start: ">", end: ">"))
+    part_label((-2.5, -1), $0$, color: black, anchor: "center")
+    part_label((-2.5, 1.9), $1$, color: blue, anchor: "center")
+  })
+}
+
+// #align(center)[
+
+//   #coulomb_friction()
+
+// ]
+
+
+
+#table(
+  columns: 4,
+  align: (center + horizon, center + horizon, center + horizon, center + horizon),
+  table.header[Cas][Vitesse][Relation][Schéma],
+  [*Adhérence*], $#mvec[V] (I in 1 slash 0) =  #mvec[0]$, $abs(F_T/F_N) < tan(psi_0)$, coulomb_friction( psi0: 50deg),
+  [*Frottement*], $#mvec[V] (I in 1 slash 0) !=  #mvec[0]$, $abs(F_T/F_N) = tan(psi)$, coulomb_friction(psilabel: $psi$, Fn: 3.5, Ft: 3.5, psi0: 45deg)
+  
+)
+
+
 = Exercices
 
 == Dispositif de bridage
@@ -398,8 +646,8 @@ On considère une poutre encastrée en $O_0$ et soumise à une force répartie $
     line((L, 0), (L, -1), stroke: (paint: black, thickness: bold))
     line((L - 1, -1), (L + 1, -1), stroke: (paint: black, thickness: bold))
     for i in range(nhatch + 1) {
-      let P = (L -1 + i * 2 / nhatch, -1)
-      let Q = (L -1 + i * 2 / nhatch - .5, -1.5)
+      let P = (L - 1 + i * 2 / nhatch, -1)
+      let Q = (L - 1 + i * 2 / nhatch - .5, -1.5)
       line(P, Q, stroke: (paint: black, thickness: light))
     }
     circle((L, -.2), radius: .2, stroke: (paint: black, thickness: bold), fill: white)
@@ -435,7 +683,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force répartie $
     let g = 4.
     let Nf = 10
     let p = 2.5
-    let a = 4 
+    let a = 4
     let A = (a, 0)
 
     // grid((0,0), (L, 8), stroke: (paint:black.lighten(50%), thickness:.2pt), step: .2)
@@ -454,18 +702,18 @@ On considère une poutre encastrée en $O_0$ et soumise à une force répartie $
     line((-1, 0), (0, 0), stroke: (paint: black, thickness: bold))
 
     dpoint((L, 0), label: [$B$], anchor: "north-west")
-   
+
     line((L, 0), (L, -1), stroke: (paint: black, thickness: bold))
     line((L - 1, -1), (L + 1, -1), stroke: (paint: black, thickness: bold))
     for i in range(nhatch + 1) {
-      let P = (L -1 + i * 2 / nhatch, -1)
-      let Q = (L -1 + i * 2 / nhatch - .5, -1.5)
+      let P = (L - 1 + i * 2 / nhatch, -1)
+      let Q = (L - 1 + i * 2 / nhatch - .5, -1.5)
       line(P, Q, stroke: (paint: black, thickness: light))
     }
     circle((L, -.2), radius: .2, stroke: (paint: black, thickness: bold), fill: white)
     dvec((L + .5, 0), arradd((L + .5, 0), x), label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat)
     dvec(O0, arradd(O0, y), label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat, padding: 4pt)
-    dvec(arradd(A, (0, 2)), A, label: [$#mvec[F]$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding : 4pt)
+    dvec(arradd(A, (0, 2)), A, label: [$#mvec[F]$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 4pt)
     dpoint(O0, label: [$O_0$], anchor: "north-west")
     dpoint(A, label: [$A$], anchor: "north-west")
     dimension_line((0, 0), (L, 0), label: [$L$], inv: true, offs: 2)
@@ -488,7 +736,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
 //     ortho(
 //     x: 30deg,
 //     y: 30deg,
-    
+
 //     // z: 0deg,
 //     {
 //       let scale = .5
@@ -510,7 +758,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
 //       dvec(O0, x, label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
 //       dvec(O0, y, label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
 //       dvec(O0, z, label: [$#mvec[z]_0$], color: green, shrink: 0, rotate_label: false, thickness: 1pt)
-      
+
 //       dpoint(O0, label: [$O_0$], anchor: "north")
 //       dpoint(F, label: [$F$], anchor: "north-west", color:black)
 //       dpoint(A, label: [$A$], anchor: "north-west", color:black)
@@ -531,7 +779,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
 //     },
 //   )
 //   })
-  
+
 // ]
 
 == Point de bascule
@@ -563,17 +811,17 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
 
 
     line(O0, ((xA + L + 1), 0), stroke: (paint: black, thickness: bold))
-    
+
     for i in range(nhatch + 1) {
       let P = (i * (xA + L + 1) / nhatch, 0)
       let Q = (i * (xA + L + 1) / nhatch - 0.5, -0.5)
       line(P, Q, stroke: (paint: black, thickness: light))
     }
-    
+
     dvec(O0, arradd(O0, x), label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat)
     dvec(O0, arradd(O0, y), label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat, padding: 4pt)
     dpoint(O0, label: [$O_0$], anchor: "south-east")
-    
+
     rect(A, C, stroke: (paint: blue, thickness: bold))
     part_label((xA + L, 0), $1$, color: blue, anchor: "south-east")
     part_label((xA + L + 1, 0), $0$, color: black, anchor: "north")
@@ -582,8 +830,8 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
     dpoint(C, label: [$C$], anchor: "south-west")
     dpoint(D, label: [$D$], anchor: "south-east")
     dpoint(G, label: [$G$], anchor: "north-west")
-    dvec((8, 7), (8, 5), label: [$#mvec[g] = -g #mvec[y]_0$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 4pt )
-     
+    dvec((8, 7), (8, 5), label: [$#mvec[g] = -g #mvec[y]_0$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 4pt)
+
     dimension_line(A, B, label: [$L$], inv: true)
     dimension_line(D, A, label: [$H$], inv: true, offs: 4)
     dvec((D), (0, H), label: [$#mvec[F]$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 2pt, anchor: "center")
@@ -591,7 +839,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
 ]
 
 On considère un solide de forme parallélépipédique $(1)$ en équilibre contre le solide $(0)$.
-Le contact entre les solides $(1)$ et  $(0)$ dans la zone $[A B]$ est avec frottement de coefficient $f$.
+Le contact entre les solides $(1)$ et $(0)$ dans la zone $[A B]$ est avec frottement de coefficient $f$.
 Le centre de gravité du solide $(1)$ l'échelle est en $G$.
 Une force $#mvec[F] = -F #mvec[x]_0$ est appliquée en $A$ sur le solide $(1)$.
 

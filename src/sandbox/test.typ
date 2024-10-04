@@ -15,3 +15,5 @@ circle((name:"circle2", anchor:30deg), radius: 0.3, stroke: black, fill: red)
 #cetz.canvas({
 fonc
 })
+
+#calc.rem(9, 2)

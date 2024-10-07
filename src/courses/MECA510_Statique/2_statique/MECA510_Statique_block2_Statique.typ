@@ -406,13 +406,16 @@ On fait les hypothèses suivantes:
     let L = 8
     let nhatch = 20
     let O0 = (0, 0)
-    let A = (0, 3)
-    let B = (L, 3)
+    let A = (4, 0)
+    let B = (0, 6)
     let x = (2, 0, 0)
     let y = (0, 2, 0)
+    let G = (3.2, 5)
     let bold = 2pt
     let light = .5pt
     let fat = 3pt
+    let P1 = (G.at(0), B.at(1))
+    let P2 = (A.at(0), G.at(1))
 
     // grid((0,0), (L, 8), stroke: (paint:black.lighten(50%), thickness:.2pt), step: .2)
     // grid((0, 0), (L, 8), stroke: (paint: black.lighten(50%), thickness: .2pt))
@@ -435,31 +438,38 @@ On fait les hypothèses suivantes:
     dvec(O0, arradd(O0, y), label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat, padding: 4pt)
     dpoint(O0, label: [$O_0$], anchor: "south-east")
     line((4, .25), (.25, 6), stroke: (paint: blue, thickness: 2pt), name: "AB")
+    line((name:"AB", anchor:50%), G, stroke: (paint: blue, thickness: 2pt), name: "AG")
     circle((4, .25), radius: .25, stroke: (paint: blue, thickness: 2pt), fill: white)
     circle((.25, 6), radius: .25, stroke: (paint: blue, thickness: 2pt), fill: white)
-    dpoint((name: "AB", anchor: 50%), label: [$G$], anchor: "south-west")
+    dpoint(G, label: [$G_1$], anchor: "south-west")
 
     part_label((7, 0), $0$, color: black, anchor: "south")
     part_label((1, 4.8), $1$, color: blue, anchor: "center")
-    dpoint((4, 0), label: [$A$], anchor: "south-west")
-    dpoint((0, 6), label: [$B$], anchor: "south-west")
+    dpoint(A, label: [$A$], anchor: "south-west")
+    dpoint(B, label: [$B$], anchor: "south-west")
     dvec((6, 7), (6, 3), label: [$#mvec[g] = -g #mvec[y]_0$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 4pt)
     dimension_line(O0, (4, 0), label: [$x_A$], inv: true)
     dimension_line(O0, (0, 6), label: [$y_B$], inv: false)
-    dimension_line((4, 0), (0, 6), label: [$L$], inv: true, invert_label: true)
+    // dimension_line((4, 0), (0, 6), label: [$L$], inv: true, invert_label: true)
+    line((G), P1, stroke: (paint: black, thickness: light))
+    line((G), P2, stroke: (paint: black, thickness: light))
+    dimension_line(B, P1, label: [$x_G$], inv: false, invert_label: false)
+    dimension_line(P2, A, label: [$y_G$], inv: false, invert_label: true, offs:1)
   })
 ]
 
-On considère l'échelle $(1)$ en équilibre contre le solide $(0)$.
-Le contact en $A$ est avec frottement de coefficient $f$.
-Le contact en $B$ est sans frottement.
-Le centre de gravité de l'échelle est en $G$.
+On considère l'échelle et l'opérateur qui monte dessus comme le solide $(1)$.
+L'ensemble ($1$) a pour centre de gravité $G_1$.
+Le mur et et le sol forment le solide $(0)$.
+Le contact en $A$ entre ($1$) et ($0$) est avec frottement de coefficient $f$.
+Le contact en $B$ ($1$) et ($0$) est sans frottement.
 
 === Questions
 
 1. Faire un bilan d'actions mécaniques.
 2. Ecrire l'équilibre du solide $(1)$.
 3. En déduire à quelle conditions son équilibre est possible.
+4. Traduire graphiquement les positions de l'opérateur qui permettent l'équilibre et celles qui vont le conduire à la chute. 
 
 
 == VTT dans une pente

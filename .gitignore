@@ -1,2 +1,4 @@
 **/.DS_Store
 *.pdf
+doc/index.html
+publish.py

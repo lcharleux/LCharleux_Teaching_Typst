@@ -15,7 +15,7 @@ Ce dépôt contient des éléments de cours écrits avec Typst.
 
 - [MECA510_Statique.pdf](https://github.com/lcharleux/LCharleux_Teaching_Typst/raw/outputs/MECA510_Statique.pdf)
 
-#### [**MECA512**]  Cinématique des solides indéformables
+### [**MECA512**]  Cinématique des solides indéformables
 
 - [MECA512_Cinematique.pdf](https://github.com/lcharleux/LCharleux_Teaching_Typst/raw/outputs/MECA512_Cinematique.pdf)
 

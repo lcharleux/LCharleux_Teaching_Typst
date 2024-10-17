@@ -1,6 +1,6 @@
-# Teaching ressources written in Typst
+# Support de cours écrits en Typst
 
-Author: Ludovic Charleux (ludovic.charleux@univ-smb.fr)
+Auteur: Ludovic Charleux (ludovic.charleux@univ-smb.fr)
 
 Ce dépôt contient des éléments de cours écrits en Typst.
 

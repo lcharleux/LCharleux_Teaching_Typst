@@ -1,6 +1,6 @@
 // TEMPLATE IMPORT
-#import "../../../templates/conf.typ": conf, todo, comment, idea, note, important
-#import "../../../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod, arrdotprod, torseur1, torseur2, torseur6
+#import "../../templates/conf.typ": conf, todo, comment, idea, note, important
+#import "../../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod, arrdotprod, torseur1, torseur2, torseur6
 #import "@preview/unify:0.6.0": num, qty, numrange, qtyrange
 #import "@preview/cetz:0.2.2"
 #import "@preview/showybox:2.0.1": showybox
@@ -10,7 +10,7 @@
 #set math.equation(numbering: "(1)")
 
 // DOCUMENT SETUP
-#let course = "MECA510 - Statique"
+#let course = "MECA510-512: Statique & Cinématique" 
 #let block = "Notions indispensables sur les vecteurs et les torseurs"
 #let section = "MECA3-FISA"
 #let teacher = "Ludovic Charleux"

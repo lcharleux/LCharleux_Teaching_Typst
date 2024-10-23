@@ -639,12 +639,12 @@ Le contact en $B$ ($1$) et ($0$) est sans frottement.
       dpoint((2, 0), label: [$A$], anchor: "north-east")
       dpoint((6, 0), label: [$B$], anchor: "north-east")
       dpoint((4.5, 3), label: [$G_1$], anchor: "south")
-      dvec((5, 7), (5 - g * calc.sin(r), 7 - g * calc.cos(r)), label: [$#mvec[g] = -g #mvec[y]_0$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 4pt)
+      dvec((5, 7), (5 - g * calc.sin(r), 7 - g * calc.cos(r)), label: [$#mvec[g] = g (-cos(theta) #mvec[y]_0 + sin(theta) #mvec[x]_0)$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 8pt, anchor:"west")
 
 
       line((5, 7), (5, 3), stroke: (paint: black, thickness: 1pt, dash: "dashed"))
       dangle3p((5, 7), (5, 3), (5 - g * calc.sin(r), 7 - g * calc.cos(r)), radius: 3.5, label: $theta$, color: green)
-      dimension_line((2, 0), (3.5, 0), label: [$l$], inv: true, offs: 1)
+      dimension_line((2, 0), (4.5, 0), label: [$l$], inv: true, offs: 1)
       dimension_line((2, 0), (6, 0), label: [$L$], inv: true, offs: 2)
       dimension_line((0, 0), (0, 3), label: [$H$], inv: false, offs: 2)
       line((0, 3), (4.5, 3), stroke: (paint: black, thickness: light))

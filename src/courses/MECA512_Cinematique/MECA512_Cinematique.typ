@@ -73,8 +73,8 @@ La vitesse de rotation de $(S_1)$ par rapport à $(S_0)$ est $Omega (1 slash 0) 
 3. Calculer la vitesse du point $I in 1$ par rapport à $(S_0)$ par dérivation du vecteur position.
 4. Calculer la vitesse du point $I in 1$ par rapport à $(S_0)$ par en utilisant la règle de Varignon. 
    Que pensez vous de ce résultat par rapport à celui de la question précédente ?
-5. Quelle est la vitesse du point $I in 1$, le point coïncident avec $I$ appartenant à $(S_1)$ par rapport à $(S_0)$ notée $#mvec[V] (I in 1 slash 0)$ ?
-6. Quelle est la vitesse du point $B$ appartenant à $(S_2)$ par rapport à $(S_0)$ notée $#mvec[V]  (B in 2 slash 0)$ ?
+// 5. Quelle est la vitesse du point $I in 1$, le point coïncident avec $I$ appartenant à $(S_1)$ par rapport à $(S_0)$ notée $#mvec[V] (I in 1 slash 0)$ ?
+5. Quelle est la vitesse du point $B$ appartenant à $(S_2)$ par rapport à $(S_0)$ notée $#mvec[V]  (B in 2 slash 0)$ ?
 
 
 

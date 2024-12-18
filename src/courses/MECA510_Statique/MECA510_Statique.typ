@@ -1,3 +1,4 @@
+
 // TEMPLATE IMPORT
 #import "../../templates/conf.typ": conf, todo, comment, idea, note, important
 #import "../../templates/drawing.typ": dvec, dpoint, dangle3p, dimension_line, arotz90, arrnumprod, arrsub, anorm, normalize, rotmat2D, dispvcol, arradd, mvec, arrcrossprod, arrdotprod, torseur1, torseur2, torseur6, part_label
@@ -49,7 +50,6 @@
 
     line(O, arradd(O, x), stroke: (paint: green, thickness: 1pt))
     dpoint(O, label: [$#mvec[z]_0$], anchor: "north-east", color: green, padding: 8pt)
-
   })
 }
 
@@ -254,8 +254,8 @@
     dpoint(I, label: [$I$], anchor: "north", padding: 8pt)
     line((Ft, 0), (Ft, Fn), stroke: (paint: black, thickness: light))
     line((0, Fn), (Ft, Fn), stroke: (paint: black, thickness: light))
-    line(I, (calc.cos(90deg  - psi0) * radpsi, calc.sin(90deg  - psi0) * radpsi), stroke: (paint: orange, thickness: light))
-    dangle3p(I, (0, 1), (calc.cos(90deg  - psi0) * radpsi, calc.sin(90deg  - psi0) * radpsi), label: psilabel, color: orange, mark: (start: ">", end: ">"))
+    line(I, (calc.cos(90deg - psi0) * radpsi, calc.sin(90deg - psi0) * radpsi), stroke: (paint: orange, thickness: light))
+    dangle3p(I, (0, 1), (calc.cos(90deg - psi0) * radpsi, calc.sin(90deg - psi0) * radpsi), label: psilabel, color: orange, mark: (start: ">", end: ">"))
     part_label((-2.5, -1), $0$, color: black, anchor: "center")
     part_label((-2.5, 1.9), $1$, color: blue, anchor: "center")
   })
@@ -273,9 +273,8 @@
   columns: 4,
   align: (center + horizon, center + horizon, center + horizon, center + horizon),
   table.header[Cas][Vitesse][Relation][Schéma],
-  [*Adhérence*], $#mvec[V] (I in 1 slash 0) =  #mvec[0]$, $abs(F_T/F_N) < tan(psi_0)$, coulomb_friction( psi0: 50deg),
-  [*Frottement*], $#mvec[V] (I in 1 slash 0) !=  #mvec[0]$, $abs(F_T/F_N) = tan(psi)$, coulomb_friction(psilabel: $psi$, Fn: 3.5, Ft: 3.5, psi0: 45deg)
-  
+  [*Adhérence*], $#mvec[V] (I in 1 slash 0) =  #mvec[0]$, $abs(F_T/F_N) < tan(psi_0)$, coulomb_friction(psi0: 50deg),
+  [*Frottement*], $#mvec[V] (I in 1 slash 0) !=  #mvec[0]$, $abs(F_T/F_N) = tan(psi)$, coulomb_friction(psilabel: $psi$, Fn: 3.5, Ft: 3.5, psi0: 45deg),
 )
 
 
@@ -313,7 +312,6 @@
     }
 
 
-
     dpoint((L, 0), label: [$A$], anchor: "north-west")
     for i in range(Nf + 1) {
       let x = L * i / Nf
@@ -322,7 +320,6 @@
       let C = (x, y, 0)
       // dpoint(B, label: [$B B_#str(i)$], anchor: "north")
       dvec(C, B, label: none, color: red, shrink: 0, rotate_label: false, thickness: 1pt)
-
     }
     dvec((L + .5, 0), arradd((L + .5, 0), x), label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat)
     dvec(O0, arradd(O0, y), label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat, padding: 4pt)
@@ -380,7 +377,6 @@ On considère une poutre encastrée en $O_0$ et soumise à une force répartie $
       let C = (x, y, 0)
       // dpoint(B, label: [$B B_#str(i)$], anchor: "north")
       dvec(C, B, label: none, color: red, shrink: 0, rotate_label: false, thickness: 1pt)
-
     }
     line(O0, (L, p), stroke: (paint: red, thickness: light))
     line((L, 0), (L, -1), stroke: (paint: black, thickness: bold))
@@ -563,7 +559,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
     dvec(O0, arradd(O0, y), label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat, padding: 4pt)
     dpoint(O0, label: [$O_0$], anchor: "south-east")
     line((4, .25), (.25, 6), stroke: (paint: blue, thickness: 2pt), name: "AB")
-    line((name:"AB", anchor:50%), G, stroke: (paint: blue, thickness: 2pt), name: "AG")
+    line((name: "AB", anchor: 50%), G, stroke: (paint: blue, thickness: 2pt), name: "AG")
     circle((4, .25), radius: .25, stroke: (paint: blue, thickness: 2pt), fill: white)
     circle((.25, 6), radius: .25, stroke: (paint: blue, thickness: 2pt), fill: white)
     dpoint(G, label: [$G_1$], anchor: "south-west")
@@ -579,7 +575,7 @@ On considère une poutre encastrée en $O_0$ et soumise à une force concentrée
     line((G), P1, stroke: (paint: black, thickness: light))
     line((G), P2, stroke: (paint: black, thickness: light))
     dimension_line(B, P1, label: [$x_G$], inv: false, invert_label: false)
-    dimension_line(P2, A, label: [$y_G$], inv: false, invert_label: true, offs:1)
+    dimension_line(P2, A, label: [$y_G$], inv: false, invert_label: true, offs: 1)
   })
 ]
 
@@ -594,7 +590,7 @@ Le contact en $B$ ($1$) et ($0$) est sans frottement.
 1. Faire un bilan d'actions mécaniques.
 2. Ecrire l'équilibre du solide $(1)$.
 3. En déduire à quelle conditions son équilibre est possible.
-4. Traduire graphiquement les positions de l'opérateur qui permettent l'équilibre et celles qui vont le conduire à la chute. 
+4. Traduire graphiquement les positions de l'opérateur qui permettent l'équilibre et celles qui vont le conduire à la chute.
 
 
 == VTT dans une pente
@@ -639,7 +635,7 @@ Le contact en $B$ ($1$) et ($0$) est sans frottement.
       dpoint((2, 0), label: [$A$], anchor: "north-east")
       dpoint((6, 0), label: [$B$], anchor: "north-east")
       dpoint((4.5, 3), label: [$G_1$], anchor: "south")
-      dvec((5, 7), (5 - g * calc.sin(r), 7 - g * calc.cos(r)), label: [$#mvec[g] = g (-cos(theta) #mvec[y]_0 + sin(theta) #mvec[x]_0)$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 8pt, anchor:"west")
+      dvec((5, 7), (5 - g * calc.sin(r), 7 - g * calc.cos(r)), label: [$#mvec[g] = g (-cos(theta) #mvec[y]_0 + sin(theta) #mvec[x]_0)$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 8pt, anchor: "west")
 
 
       line((5, 7), (5, 3), stroke: (paint: black, thickness: 1pt, dash: "dashed"))
@@ -745,7 +741,7 @@ Une force $#mvec[F] = -F #mvec[x]_0$ est appliquée en $A$ sur le solide $(1)$.
 
 == Dispositif de bridage
 
-
+=== Enoncé
 
 #align(center)[
 
@@ -858,5 +854,106 @@ On fait les hypothèses suivantes:
 3. Définir les solides à isoler et l'ordre dans lequel vous comptez le faire afin de calculer l'effort appliqué par les brides sur la pièce $(1)$.
 4. Calculer l'effort appliqué par les brides sur la pièce $(1)$ en fonction de $S$.
 5. Conclure quant au choix des dimensions du systéme.
+
+
+== Solides en équilibre sur un plan incliné
+
+
+=== Enoncé
+#align(center)[
+
+  #cetz.canvas({
+    let L = 8
+    let l = 2.5
+    let h = 2.7
+    let nhatch = 20
+    let O0 = (0, 0)
+    let x = (2, 0, 0)
+    let y = (0, 2, 0)
+    let bold = 2pt
+    let light = .5pt
+    let fat = 3pt
+    let r = 30deg
+    let g = 4.
+    let R = 3 / 2
+    rotate(z: r)
+    {
+      // grid((0,0), (L, 8), stroke: (paint:black.lighten(50%), thickness:.2pt), step: .2)
+      // grid((0, 0), (L, 8), stroke: (paint: black.lighten(50%), thickness: .2pt))
+      // GRID
+
+
+      line(O0, (L, 0), stroke: (paint: black, thickness: bold))
+
+      for i in range(nhatch + 1) {
+        let P = (i * L / nhatch, 0)
+        let Q = (i * L / nhatch - 0.5, -0.5)
+        line(P, Q, stroke: (paint: black, thickness: light))
+      }
+
+
+      dpoint(O0, label: [$O_0$], anchor: "south-east")
+      // circle((2, 1), radius: 1, stroke: (paint: blue, thickness: 2pt), fill: none)
+      // circle((6, 1), radius: 1, stroke: (paint: blue, thickness: 2pt), fill: none)
+      // line((2, 1), (6, 1), stroke: (paint: blue, thickness: 2pt), name: "AB")
+      // line((4.5, 1), (4.5, 3), stroke: (paint: blue, thickness: 2pt), name: "CD")
+      // circle((2, 1), radius: .1, stroke: (paint: blue, thickness: 2pt), fill: white)
+      // circle((6, 1), radius: .1, stroke: (paint: blue, thickness: 2pt), fill: white)
+      // dpoint((2, 0), label: [$A$], anchor: "north-east")
+      // dpoint((6, 0), label: [$B$], anchor: "north-east")
+      // dpoint((4.5, 3), label: [$G_1$], anchor: "south")
+      rect(O0, (l, h), stroke: (paint: blue, thickness: 2pt), fill: white)
+
+      circle((l + R, R), radius: R, stroke: (paint: purple, thickness: 2pt), fill: white)
+      dpoint((l + R, 0), label: [$A$], anchor: "south")
+      dpoint((l + R, R), label: [$C$], anchor: "west")
+      dpoint((l, R), label: [$B$], anchor: "west")
+      line((l, R), (l + R, R), stroke: (paint: black, thickness: light))
+      line((l + R, R), (l + R, 0), stroke: (paint: black, thickness: light))
+      dvec(O0, arradd(O0, x), label: [$#mvec[x]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat)
+      dvec(O0, arradd(O0, y), label: [$#mvec[y]_0$], color: green, shrink: 0, rotate_label: false, thickness: fat, padding: 4pt)
+      dvec((5, 7), (5 - g * calc.sin(r), 7 - g * calc.cos(r)), label: [$#mvec[g] = -g (cos(theta) #mvec[y]_0 + sin(theta) #mvec[x]_0)$], color: red, shrink: 0, rotate_label: false, thickness: bold, padding: 8pt, anchor: "east", label_fill: none)
+
+
+      line((5, 7), (5, 3), stroke: (paint: black, thickness: 1pt, dash: "dashed"))
+      dangle3p((5, 7), (5, 3), (5 - g * calc.sin(r), 7 - g * calc.cos(r)), radius: 3.5, label: $theta$, color: green)
+      dimension_line((0, h), (l, h), label: [$l$], inv: false, offs: 1)
+      dimension_line((l + R, 0), (l + R, R), label: [$R$], inv: true, offs: 2)
+      dimension_line((0, 0), (0, h), label: [$h$], inv: false, offs: 2)
+      // line((0, 3), (4.5, 3), stroke: (paint: black, thickness: light))
+      part_label((l / 2, h / 2), $1$, color: blue, anchor: "center")
+      part_label((1, -1), $0$, color: black, anchor: "center")
+      part_label((l + R / 2, R / 3), $2$, color: purple, anchor: "center")
+    }
+  })
+]
+
+On s'intéresse à deux solides posés sur un plan incliné d'un angle $theta$ par rapport à l'horizontale.
+Le solide $(1)$ est un parallélépipède de longueur $l$ et de hauteur $h$ et de masse $m$.
+Le solide $(2)$ est un disque de rayon $R$ et de masse $M$.
+Les 3 solides sont en équilibre et le coefficient de frottement aux 3 points de contact esst identique et est noté $f$.
+On donne les valeurs numériques suivantes: $m = #qty(4, "kg")$, $M = #qty(12, "kg")$, $g = #qty(10, "m/s^2")$, $l = #qty(10, "cm")$, $h = #qty(15, "cm")$, $R = #qty(10, "cm")$ et $f = 0.2$.
+
+#note[Cet exercice est inspiré de #cite(<agati2020mecanique>, form:"full") page 171.]
+
+
+=== Questions
+
+1. Ecrire les équations d'équilibre. 
+2. On fait l'hypothèse que (1) glisse sans basculer sur (0), que (2) roule sans glisser sur (0) et glisse sur (1). 
+   Ecrire les équations qui en découlent.
+3. Déterminer la valeur de l'angle $theta$ pour que les solides soient en équilibre.
+4. A la limite du glissement, déterminer les inconnues le liaisons.
+5. Vérifier l'hypothèse faite à la question 2.
+
+
+
+
+
+
+
+
+
+
 
 #bibliography("../../biblio.bib", style: "institute-of-electrical-and-electronics-engineers", title: "Références")

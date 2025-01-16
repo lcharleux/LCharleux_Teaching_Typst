@@ -248,4 +248,66 @@ On s'intéresse au réducteur à bille représenté ci-dessus pour lequel on vou
 3. En déduire le rapport de réduction $omega_2 / omega_1$. Faire une application numérique.
 
 
+== Transformation de mouvement par galet
+
+#note[Cet exercice vient du CC2 de MECA591 pour l'année 2023-2024. Les questions sont formulées comme elles l'étaient dans l'examen.]
+
+#figure(
+  image("figures/systeme_levage.png", width: 50%),
+  caption: [Transformation de mouvement par galet .],
+) <systeme_levage>
+
+Le mécanisme schématisé ci-contre est constitué:
+		- d'un bâti $(S_0)$ auquel est lié le repère $ frak(R)_0 = (O, #mvec[x]_0, #mvec[y]_0,#mvec[z]_0)$.
+		- d'un bras $(S_1)$ en liaison pivot d'axe $(O,#mvec[z]_0)$ avec le bâti.
+		      Le repère $ frak(R)_1 = (O, #mvec[x]_1, #mvec[y]_1,#mvec[z]_0)$ est lié au solide $(S_1)$.
+		      La rotation de $(S_1)$ par rapport à  $(S_0)$ est paramétrée par l'angle $alpha$.
+		      On note $#mvec[OA] = a #mvec[x]_1$.
+		- d'un galet cylindrique $(S_2)$ de rayon $r$, en liaison pivot d'axe $(A,#mvec[z]_0)$ avec le bras $(S_1)$.
+		      Le repère $ frak(R)_2 = (O, #mvec[x]_2, #mvec[y]_2, #mvec[z]_0)$ est lié au solide $(S_2)$.
+		      La rotation de $(S_2)$ par rapport à $(S_1)$ est paramétrée par l'angle $beta$.
+		- d'une plate-forme (S3) en liaison glissière $(O,#mvec[y]_0)$ avec le bâti $(S_0)$.
+		      On note $#mvec[OB] =  h #mvec[y]_0$ avec $h$ variable.
+		      Enfin, $I$ est le point de contact entre $(S_2)$ et $(S_3)$.
+
+=== Questions
+
+1. Exprimer la vitesse de rotation entre $(S_1)$ et $(S_0)$ notée $#mvec[ $ Omega$] (1 slash 0 )$
+2. Exprimer la vitesse de rotation entre $(S_2)$ et $(S_0)$ notée $#mvec[ $ Omega$] (2 slash 0 )$.
+3. Exprimer la vitesse de rotation entre $(S_3)$ et $(S_0)$ notée $#mvec[ $ Omega$] (3 slash 0 )$.
+4. Déterminer la vitesse du point $I$ appartenant à $(S_3)$ par rapport au repère $frak(R)_0$ notée $ #mvec[V] (I in 3 slash 0 )$.
+5. Déterminer l'accélération du point $I$ appartenant à $(S_3)$ par rapport au repère $frak(R)_0$ notée $#mvec[A] (I in 3 slash 0 )$.
+6. Déterminer la vitesse du point $A$ appartenant à $(S_1)$ par rapport au repère $frak(R)_0$ notée $ #mvec[V] (A in 1 slash 0 )$.
+7. Déterminer l'accélération du point $A$ appartenant à $(S_1)$ par rapport au repère $frak(R)_0$ notée $#mvec[A] (A in 1 slash 0 )$.
+8. Déterminer la vitesse du point $I$ appartenant à $(S_2)$ par rapport au repère $frak(R)_0$ notée $#mvec[V] (I in 2 / 0)$.
+9. En déduire la vitesse du point I appartenant à $(S_3)$ par rapport à $(S_2)$ notée $#mvec[V] (I in 3 / 2)$.
+10. On suppose maintenant que le galet $(S_2)$ roule sans glisser sur la plate-forme $(S_3)$. 
+    Quelle est l'équation qui en découle ?
+11. Déduisez en l'expression de  $accent(beta, dot)$ en fonction de $a$, $r$, $alpha$ et $accent(alpha, dot)$
+12. Déduisez en l'expression de  $accent(h, dot)$ en fonction de $a$, $ alpha$ et $accent(alpha, dot)$.
+
+== Réducteur Graham
+
+#note[Cet exercice est inspiré de #cite(<agati2020mecanique>, form:"full") page 92.]
+
+#figure(
+  image("figures/graham.png", width: 100%),
+  caption: [Réducteur Graham.],
+) <graham>
+
+Soit le réducteur de vitesse schématisé ci-dessus pour lequel on vous fournit les données suivantes:
+- Soit $ frak(R)_1 = (O, #mvec[x], #mvec[y]_1,#mvec[z]_1)$  et $ frak(R)_2 = (A, #mvec[x]_2, #mvec[y]_2,#mvec[z]_1)$ deux repères liés au solide $S_1$ tels quel $#mvec[OA]$ ait même direction et sens que $#mvec[y_1]$.
+- On pose $alpha = (#mvec[x], #mvec[x]_2)$ constant.
+- On pose $#mvec[$Omega$] (S slash S_1) = omega #mvec[x]_2$.
+// - Le solide $S_1$ avec son repère associé $ frak(R)_1 = (O, #mvec[x], #mvec[y]_1,#mvec[z]_1)$ est en liaison pivot d'axe $(O,#mvec[x]_0)$ avec le bâti $S_0$.
+// - Le solide $S_2$ avec en liaison pivot d'axe $(O,#mvec[x])$ avec le solide $S_0$. 
+// - Le solide $S$ est en liaison pivot d'axe $(A,#mvec[x]_2)$ avec le solide $S_1$.
+
+
+=== Questions
+
+1. Exprimer le roulement sans glissement de $(S)$ sur $(S_3)$ aun point $I$ et déterminer $omega$ en fonction de $omega_1$.
+2. Quelle relation obtient-on entre $omega_1$, $omega_2$ et $omega$ en utilisant la relation de roulement sans glissement entre les roues dentées ?
+3. En déduire le rapport de réduction $omega_2 / omega_1$ en fonction de $lambda$.
+4. Tacer la courbe du rapport de variation $omega_2 / omega_1$ en fonction de $lambda$ sachant que $n slash n_2 = 11 slash 38$, d = 55 mm et que $lambda$ varie entre 12 mm et 23 mm. 
 #bibliography("../../biblio.bib", style: "institute-of-electrical-and-electronics-engineers", title: "Références")

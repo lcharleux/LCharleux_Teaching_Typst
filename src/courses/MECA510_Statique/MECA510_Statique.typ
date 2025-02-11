@@ -729,7 +729,7 @@ Le cycliste peut ajuster sa position en jouant sur la longueur $l$.
 
 On considère un solide de forme parallélépipédique $(1)$ en équilibre contre le solide $(0)$.
 Le contact entre les solides $(1)$ et $(0)$ dans la zone $[A B]$ est avec frottement de coefficient $f$.
-Le centre de gravité du solide $(1)$ l'échelle est en $G$.
+Le centre de gravité du solide $(1)$ est en $G$.
 Une force $#mvec[F] = -F #mvec[x]_0$ est appliquée en $A$ sur le solide $(1)$.
 
 === Questions

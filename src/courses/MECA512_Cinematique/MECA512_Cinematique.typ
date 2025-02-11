@@ -296,9 +296,10 @@ Le mécanisme schématisé ci-contre est constitué:
 ) <graham>
 
 Soit le réducteur de vitesse schématisé ci-dessus pour lequel on vous fournit les données suivantes:
-- Soit $ frak(R)_1 = (O, #mvec[x], #mvec[y]_1,#mvec[z]_1)$  et $ frak(R)_2 = (A, #mvec[x]_2, #mvec[y]_2,#mvec[z]_1)$ deux repères liés au solide $S_1$ tels quel $#mvec[OA]$ ait même direction et sens que $#mvec[y_1]$.
+- Soit $ frak(R)_1 = (O, #mvec[x], #mvec[y]_1,#mvec[z]_1)$  et $ frak(R)_2 = (A, #mvec[x]_2, #mvec[y]_2,#mvec[z]_1)$ deux repères liés au solide $S_1$ tels quel $#mvec[OA]$ ait même direction et sens que $#mvec[y]_1$.
 - On pose $alpha = (#mvec[x], #mvec[x]_2)$ constant.
 - On pose $#mvec[$Omega$] (S slash S_1) = omega #mvec[x]_2$.
+- A l'extrémité de $(S)$ est fixée une roue dentée de $n$ dents qui engrenne avec une roue dentée de $n_2$ dents fixée à l'extrémité de $(S_2)$.
 // - Le solide $S_1$ avec son repère associé $ frak(R)_1 = (O, #mvec[x], #mvec[y]_1,#mvec[z]_1)$ est en liaison pivot d'axe $(O,#mvec[x]_0)$ avec le bâti $S_0$.
 // - Le solide $S_2$ avec en liaison pivot d'axe $(O,#mvec[x])$ avec le solide $S_0$. 
 // - Le solide $S$ est en liaison pivot d'axe $(A,#mvec[x]_2)$ avec le solide $S_1$.
@@ -310,4 +311,31 @@ Soit le réducteur de vitesse schématisé ci-dessus pour lequel on vous fournit
 2. Quelle relation obtient-on entre $omega_1$, $omega_2$ et $omega$ en utilisant la relation de roulement sans glissement entre les roues dentées ?
 3. En déduire le rapport de réduction $omega_2 / omega_1$ en fonction de $lambda$.
 4. Tacer la courbe du rapport de variation $omega_2 / omega_1$ en fonction de $lambda$ sachant que $n slash n_2 = 11 slash 38$, d = 55 mm et que $lambda$ varie entre 12 mm et 23 mm. 
+
+
+
+== Bille sur plateau tournant
+
+=== Enoncé
+
+On considère un repère $frak(R)_0 = (O_0, #mvec[x]_0, #mvec[y]_0,#mvec[z]_0)$ lié à un solide $S_0$ considéré comme fixe et galiléen.
+Un repère $frak(R)_1 = (O_0, #mvec[x]_1, #mvec[y]_1,#mvec[z]_0)$ est associé à un plateau $S_1$ de rayon $R$ en rotation uniforme autour de l'axe vertical $(O_0, #mvec[z]_0)$ par rapport à $S_0$ à une vitesse $#mvec[$Omega$] (1 slash 0) = omega #mvec[z]_0$.
+À l'instant initial $t = #qty("0", "s")$, les deux repères sont confondus.
+On ajoute au problème une bille $S_3$ considérée comme ponctuelle située au point $A$ qui glisse sans frottement sur le plateau $S_1$.
+À $t=#qty("0", "s")$, la bille est placée de sorte que $ #mvec[$O_0 A$] = R #mvec[x]_0$ avec une vitesse $#mvec[V] (A in 3 slash 0, t=#qty("0", "s")) = -v_0 #mvec[x]_0$.
+On considère uniquement le cas de la billes qui reste sur le plateau.
+
+=== Questions
+
+1. Faire un schéma du système en indiquant les repères et les vecteurs vitesse.
+2. Exprimer la vitesse de la bille $A$ par rapport à $S_0$ notée $#mvec[V] (A in 3 slash 0)$ à chaque instant.
+3. Exprimer l'accélération de la bille $A$ par rapport à $S_0$ notée $#mvec[A] (A in 3 slash 0)$ à chaque instant.
+4. Exprimer le vecteeur #mvec[$O_0 A$] en fonction du temps, en déduire la nature de la trajectoire de $A$ dans $S_0$.
+5. Quelle est la trajectoire du point $A$ dans $S_1$ ?
+6. Exprimer la vitesse de la bille $A$ par rapport à $S_1$ notée $#mvec[V] (A in 3 slash 1)$ à chaque instant.
+7. Exprimer l'accélération de la bille $A$ par rapport à $S_1$ notée $#mvec[A] (A in 3 slash 1)$ à chaque instant.
+8. Comment expliquez vous que les deux trajetoires soient différentes ? 
+9. Quelles applications voyez vous à ce résultat ?
+
+
 #bibliography("../../biblio.bib", style: "institute-of-electrical-and-electronics-engineers", title: "Références")
